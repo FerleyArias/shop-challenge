@@ -29,7 +29,7 @@ export default {
     ]),
     selectPrice(prices) {
       for(let i = 0; i < prices.length; i++) {
-        if(prices[i].price === 0 || i === prices.length -1) {
+        if(prices[i].price != 0 || i === prices.length -1) {
           return prices[i].price
         }
       }
