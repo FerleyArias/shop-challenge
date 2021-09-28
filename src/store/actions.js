@@ -6,7 +6,9 @@ export default {
       commit('setLoading')
       const data = await getAllComics(offset)
       const updateComics = state.comics.concat(data.data.results)
-      commit('setTotal', data.data.total) 
+      if(state.total === 0) {
+        commit('setTotal', data.data.total) 
+      }
       commit('setComics', updateComics)
     } catch (error) {
       commit('setError', error)
