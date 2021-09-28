@@ -4,7 +4,7 @@
     <h1 class="home__title">Marvel Comics</h1>
     <Loading v-if="loading || comics.length < page*20"/>
     <Error v-else-if="error" :error="error"/>
-    <comic-list v-else :comics="comics.slice((page-1)*20, page*20)" @handleNext="nextPage" @handlePreview="previewPage"/>
+    <comic-list v-else :comics="comics.slice((page-1)*20, page*20)" :page="page" @handleNext="nextPage" @handlePreview="previewPage"/>
   </div>
 </div>
 </template>
@@ -41,7 +41,7 @@ export default {
       }
     },
     previewPage(){
-      this.page++
+      this.page--
     }
   },
   computed: {

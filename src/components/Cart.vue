@@ -73,7 +73,7 @@ export default {
       }
     }
     &__card {
-      right: 0;
+      right: -2rem;
       top: 3.5rem;
       position: absolute;
       background-color: white;
@@ -93,7 +93,7 @@ export default {
       width: 1rem;
       height: 1rem;
       top: -.3rem;
-      right: 1rem;
+      right: 3rem;
       transform: rotate(45deg);
       position: absolute;
       background-color: white;
@@ -112,7 +112,14 @@ export default {
       }
     }
   }
-  .red {
-    background: red;
+  @media screen and (min-width: 640px) {
+    .cart {
+      &__card {
+        right: 0;
+      }
+      &__pointer {
+        right: 1rem;
+      }
+    }
   }
 </style>

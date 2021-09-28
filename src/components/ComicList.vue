@@ -4,10 +4,10 @@
       <comic-list-item v-for="(comic, index) in comics" :key="index" :comic="comic"/>
     </div>
     <div class="comic-list__nav">
-      <button :disabled="page === 1" @click="$emit('handlePreview')" class="comic-list__button-nav">
+      <button :disabled="page === 1" @click="$emit('handlePreview')" :class="page === 1&&'comic-list__button-nav--disabled'" class="comic-list__button-nav">
         <font-awesome-icon icon="angle-left"/>
       </button>
-      <button :disabled="page === totalPages" @click="$emit('handleNext')"  class="comic-list__button-nav">
+      <button :disabled="page === totalPages" @click="$emit('handleNext')" :class="page === totalPages&&'comic-list__button-nav--disabled'"  class="comic-list__button-nav">
         <font-awesome-icon icon="angle-right"/>
       </button>
     </div>   
@@ -36,7 +36,7 @@ export default {
     max-width: 72rem;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(4,max-content);
+    grid-template-columns: max-content;
     padding: 1rem;
     grid-gap: 2.5rem;
     justify-content: center;
@@ -57,6 +57,27 @@ export default {
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      &--disabled {
+        cursor: auto;
+        color: #999;
+        border-color: #999;
+
+      }
+    }
+  }
+  @media screen and (min-width: 640px) {
+    .comic-list {
+      grid-template-columns: repeat(2,max-content);
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .comic-list {
+      grid-template-columns: repeat(3,max-content);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .comic-list {
+      grid-template-columns: repeat(4,max-content);
     }
   }
 </style>

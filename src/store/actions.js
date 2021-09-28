@@ -13,25 +13,17 @@ export default {
     }
   },
   addCartItem({state,commit},comic) {
-    const updateCart = state.cart
-    let repeat = false
-    for (let i = 0; i < updateCart.length; i++) {
-      if(updateCart[i].id === comic.id) {
-        console.log(updateCart[i].id, comic.id)
-        updateCart[i].quantity += comic.quantity
-        console.log(updateCart[i].quantity, comic.quantity)
-        repeat = true
-      }
-    }
-    if(!repeat) {
+    const updateCart = JSON.parse(JSON.stringify(state.cart))
+    let indexRepeat = updateCart.findIndex(({id})=> id === comic.id)
+    if(indexRepeat >= 0 ) {
+      updateCart[indexRepeat].quantity+=comic.quantity
+    } else {
       updateCart.push(comic)
     }
-    console.log(updateCart)
     commit('setCart', updateCart)
   },
   deleteCartItem({state,commit},index) {
-    const updateCart = state.cart
-    console.log(updateCart)
+    const updateCart = JSON.parse(JSON.stringify(state.comic))
     updateCart.splice(index,1)
     commit('setCart', updateCart)
   }
