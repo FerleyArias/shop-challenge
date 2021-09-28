@@ -23,7 +23,7 @@ export default {
     commit('setCart', updateCart)
   },
   deleteCartItem({state,commit},index) {
-    const updateCart = JSON.parse(JSON.stringify(state.comic))
+    const updateCart = JSON.parse(JSON.stringify(state.cart))
     updateCart.splice(index,1)
     commit('setCart', updateCart)
   }
